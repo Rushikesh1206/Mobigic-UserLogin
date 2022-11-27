@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf">
+<head>
+<meta charset="ISO-8859-1">
+<title>RegisterDemo</title>
+</head>
+<body>
+	<div align="center">
+		<div th:if="${session.message}"
+			th:classappend="${session.message.type}" class="alert locAlert"
+			id="successMessage" role="alert">
+			<p th:text="${session.message.text}"></p>
+
+			<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+		</div>
+		
+		<form th:action="@{/register}" th:object="${user}" method="post">
+			<div>
+			    <h2 >Enter Your User Name</h2>
+				<input type="text" name="username" placeholder="User Name" > 
+			</div>
+			<div>
+				<h2>Enter Your First Name</h2>
+				<input type="text" name="firstname" placeholder="First Name"> 
+			</div>
+			<div>
+				<h2>Enter Your Last Name</h2>
+				<input type="text" name="lastname" placeholder="Last Name"> 
+			</div>
+			<div>
+				<h2>Enter Your Password</h2>
+				<input type="password" name="password" placeholder="User Password"> 
+			</div>
+			<br></br>
+
+	
+			<input type="submit" value="Register" name="btnRegister">
+		</form>
+	</div>
+</body>
+</html>
